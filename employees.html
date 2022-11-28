@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;900&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+
+  <!-- Glidejs StyleSheet -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.min.css" />
+
+  <!-- Animate CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <!-- StyleSheet -->
+  <link rel="stylesheet" href="./styles/main.css" />
+  <link rel="stylesheet" href="./styles/employee.css" />
+  <title>PROVIDENCE</title>
+  
+</head>
+
+<body>
+  <div id="pre-loader">
+    <div class="loader"></div>
+  </div>
+
+  <div class="adverts">
+    <span>CUSTOMER RELATIONSHIP MANAGEMENT SYSTEM</span>
+  </div>
+
+  <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:3%">
+    <span><a href="products.html" class="w3-bar-item w3-button"><i class="fas fa-home"></i></a></span>
+    <span><a href="projects.html" class="w3-bar-item w3-button"><i class="fas fa-briefcase"></i></a></span>
+    <span><a href="employees.html" class="w3-bar-item w3-button"><i class="fas fa-users"></i></a></span>
+    <span><a href="calendar.html" class="w3-bar-item w3-button"><i class="fas fa-calendar"></i></a></span>
+    <span><a href="deals.html" class="w3-bar-item w3-button"><i class="fas fa-file"></i></a></span>
+</div>
+
+  <!-- Header -->
+  <header id="home" class="header">
+    <nav class="navigation">
+      <div class="nav-center container">
+        <a href="#home" class="logo">
+          <h1>PRO<span>VIDENCE</span></h1>
+        </a>
+
+        <div class="nav-menu">
+          <div class="nav-top">
+            <div class="logo">
+              <h1>PROVI<span>DENCE</span></h1>
+            </div>
+            <div class="close">
+              <i class="fas fa-times"></i>
+            </div>
+          </div>
+
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="index.html" class="nav-link">Home</a>
+            </li>
+
+            <li class="nav-item">
+              <a href="employees.html" class="nav-link">Employees</a>
+            </li>
+
+            <li class="nav-item">
+              <a href="projects.html" class="nav-link">Projects</a>
+            </li>
+
+            <li class="nav-item">
+              <a href="deals.html" class="nav-link">Deals</a>
+            </li>
+
+            <li class="nav-item">
+              <a href="calendar.html" class="nav-link">Calendar</a>
+            </li>
+
+            <li class="nav-item">
+              <a href="clients.html" class="nav-link">Clients</a>
+            </li>
+
+          </ul>
+        </div>
+
+        <div class="nav-icons">
+          <span><a href="login.html"><i class="fas fa-user"></i></a></span>
+          <span><a href="notification.html"></a><i class="fas fa-bell"></i></span>
+        </div>
+
+        <div class="hamburger">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+  <!-- Page Content -->
+    <div class="bossContainer">
+        <div class="Econtainer" id="container">
+            <div>
+              <h2>Available</h2>
+              <div class="available" id="available">
+
+              </div>
+            </div>
+            <div>
+              <h2>Unavailable</h2>
+              <div class="unavailable" id="unavailable">
+              </div>
+            </div>
+        </div>
+        <form id="Form">
+          <h2>Employee profile</h2>
+          <h3>Personal Info</h3>
+          <div class="col-right">
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" id="LastName" className="form-control" />
+            </div>
+            <div class="form-group">
+              <label>Project</label><br>
+              <select id="Project" >
+                <option value="null"></option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Salary per hour</label>
+              <input type="number" id="Price" className="form-control" />
+            </div>
+             <div class="form-group">
+              <label>End Date</label><br>
+              <input type="date" id="EndDate"  className="form-control"/>
+            </div>
+          </div>
+        
+          <div class="col-left">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" id="FirstName" className="form-control"  />
+            </div>
+            <div class="form-group">
+              <label>Job Role</label>
+              <input type="text" id="JobRole" className="form-control"  />
+            </div>
+              <div class="form-group">
+              <label>Working hours</label>
+              <input type="number" id="Hours" className="form-control"/>
+            </div>
+            <div class="form-group">
+              <label>Start Date</label><br>
+              <input type="date" id="StartDate" className="form-control"  />
+            </div>
+            <input type="button" value="Save changes" id="saveChanges" className="btn btn-primary btn-block"/>
+            <p></p>
+          <div class="form-group"></div>
+          
+             <p></p>
+             <h3>Danger Zone</h3>
+          <input type="button" value="Delete employee" id="deleteEmployee" className="btn btn-primary btn-block"/>
+        </div>
+        </form>
+       
+    </div>
+    
+
+  <!-- Glidejs Script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
+
+  <!-- Custom Script -->
+  <script src="./js/index.js"></script>
+  <script src="./js/employees.js"></script>
+</body>
+
+</html>
+
