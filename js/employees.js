@@ -60,7 +60,7 @@ function setEmployees()
     const employees = document.getElementsByClassName('blog-post');
     for (let x = 0; x < employees.length; x++) {
         employees[x].addEventListener("click", async () => {
-            //alert(employees[x].id);
+            // alert(employees[x].id);
             currentEmployeeId = employees[x].id;
             let res = await fetch(`https://localhost:7232/api/employees/${employees[x].id}`)
             res = await res.json();

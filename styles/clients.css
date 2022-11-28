@@ -20,6 +20,10 @@
     grid-template-columns: 33% 33% 33%;
   }
 
+  .current-post {
+    background-color: #6fa8f35c;
+  }
+
 .col-left {
     width: 50%;
     padding-bottom: 20px;

@@ -1,4 +1,5 @@
 const container = document.getElementById('container');
+var currentClientId = null;
 
 getPost();
 
@@ -33,11 +34,11 @@ function addDataToDOM(data) {
                       <h3>Representatives</h3>
                   <div class="form-group">
                     <label>Company representative</label>
-                    <input type="text" id="LastName" className="form-control" value="${client.companyRepresentative}" />
+                    <input type="text" id="Company" className="form-control" value="${client.companyRepresentative}" />
                   </div>
                   <div class="form-group">
                       <label>Vendor representative</label>
-                      <input type="text" id="LastName" className="form-control" value="${client.vendorRepresentative}" />
+                      <input type="text" id="Vendor" className="form-control" value="${client.vendorRepresentative}" />
                 </div>
             </div>
             <div class="deals">
@@ -50,14 +51,83 @@ function addDataToDOM(data) {
 
         const dealsList = document.getElementById('deals');
         client.deals.forEach(deal => {
-            console.log(deal);
+            // console.log(deal);
             var li = document.createElement("li");
             li.appendChild(document.createTextNode(deal));
             dealsList.appendChild(li);
         });
     });
-    // if (cont==container2)
-    //     setEmployees();
+    SetClients();
+    SetSaves();
+}
+
+function SetClients()
+{
+    const clients = document.getElementsByClassName('blog-post');
+    for (let x = 0; x < clients.length; x++) {
+        clients[x].addEventListener("click",() => {
+            // alert(clients[x].id)
+            var id= clients[x].id;
+            if (currentClientId != id)
+            {
+                currentClientId = id;
+                for (let y = 0; y < clients.length; y++){
+                    clients[y].setAttribute('class','blog-post');
+                }
+                clients[x].className = 'blog-post current-post';
+            }
+        })
+    }
+}
+
+function ChangesAreValid(a,b,c,d)
+{
+    return (a!="" && b!="" && c!="" && d!="");
+}
+
+function SetSaves()
+{
+    const btns = document.getElementsByClassName('save-btn');
+    for (let x= 0; x<btns.length; x++){
+        btns[x].addEventListener('click', async () => {
+            id = btns[x].parentNode.id;
+                var address,vendor,number,company;
+                var inputs = document.getElementById(id).querySelectorAll('input');
+                inputs.forEach(input => {
+                    switch(input.id){
+                        case 'Address':
+                            address = input.value;
+                            break;
+                        case 'Vendor':
+                            vendor = input.value;
+                            break;
+                        case 'Number':
+                            number = input.value;
+                            break;
+                        case 'Company':
+                            company = input.value;
+                            break;
+                    }
+                })
+                if (ChangesAreValid(address,vendor,number,company))
+                {
+                    await fetch (`https://localhost:7232/api/clients/${id}`, {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type" : "application/json"
+                            },
+                        body: JSON.stringify(
+                            {
+                                "contactNumber": number,
+                                "address": address,
+                                "companyRepresentative": company,
+                                "vendorRepresentative": vendor
+                            }
+                        )
+                        })
+                }
+        })
+    }
 }
 
 function FormIsValid()
@@ -68,6 +138,15 @@ function FormIsValid()
     var d = document.getElementById('comRepres').value;
     var e = document.getElementById('name').value;
     return (a!="" && b!="" && c!="" && d!="" && e!="");
+}
+
+function FormReset()
+{
+    document.getElementById('address').value = "";
+    document.getElementById('venRepres').value = "";
+    document.getElementById('number').value = "";
+    document.getElementById('comRepres').value = "";
+    document.getElementById('name').value = "";
 }
 
 document.getElementById('addClient').addEventListener('click', async () => {
@@ -92,4 +171,13 @@ document.getElementById('addClient').addEventListener('click', async () => {
         getPost();
         FormReset();
      }   
+})
+
+document.getElementById('deleteClient').addEventListener('click', async () => {
+    if (currentClientId != null)
+    {
+        var client = document.getElementById(currentClientId);
+        client.parentNode.removeChild(client)
+        await fetch(`https://localhost:7232/api/clients/${currentClientId}`, { method: 'DELETE' });
+    }
 })
