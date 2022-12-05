@@ -3,7 +3,7 @@ var currentClientId = null;
 
 getPost();
 
-async function getPost(type,cont) {
+async function getPost() {
     
     let res = await fetch(`https://localhost:7232/api/clients`)
     res = await res.json();
