@@ -48,6 +48,6 @@ label{
   padding-right: 10%;
 }
 
-.type{
+.type, select{
   width: 205px;
 }

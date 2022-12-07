@@ -1,7 +1,7 @@
 const container = document.getElementById('container');
 var currentDealId = null;
 const newClients = document.getElementById('NewClient');
-const newProjects = document.getElementById('NewProjects');
+const newProjects = document.getElementById('NewProject');
 
 getPost();
 // getClients(newClients);
