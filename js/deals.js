@@ -4,17 +4,29 @@ const newClients = document.getElementById('NewClient');
 const newProjects = document.getElementById('NewProject');
 
 getPost();
-// getClients(newClients);
+getClients(newClients);
 getProjects(newProjects);
 
 async function getProjects(elem)
 {
-    let res = await fetch(`https://localhost:7232/api/projects`)
+    let res = await fetch(`https://localhost:7232/api/projects/list`)
     res = await res.json();
     res.forEach(project => {
         const projElem = document.createElement('option');
         projElem.setAttribute('value',`${project.id}`);
         projElem.innerHTML = project.name;
+        elem.appendChild(projElem);
+    })
+}
+
+async function getClients(elem)
+{
+    let res = await fetch(`https://localhost:7232/api/clients/list`)
+    res = await res.json();
+    res.forEach(client => {
+        const projElem = document.createElement('option');
+        projElem.setAttribute('value',`${client.id}`);
+        projElem.innerHTML = client.companyName;
         elem.appendChild(projElem);
     })
 }
@@ -69,7 +81,7 @@ function addDataToDOM(data) {
             <div>
                   <div class="form-group">
                     <label>Start date</label>
-                    <input type="date" id="prospectedStartDate" class="type" className="form-control" value="${FormatDate(new Date(deal.prospectedStartDate))}" />
+                    <input type="date" id="prospectedStartDate" class="date" className="form-control" value="${FormatDate(new Date(deal.prospectedStartDate))}" />
                   </div>
                   <div class="form-group">
                       <label>Prospected hours</label>

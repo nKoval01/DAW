@@ -8,7 +8,7 @@ getProjects();
 
 async function getProjects()
 {
-    let res = await fetch(`https://localhost:7232/api/projects`)
+    let res = await fetch(`https://localhost:7232/api/projects/list`)
     res = await res.json();
     res.forEach(project => {
         const projElem = document.createElement('option');
